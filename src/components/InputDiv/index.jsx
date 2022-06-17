@@ -15,7 +15,7 @@ export const InputDiv = ({ name, label, register, error = "", ...rest }) => {
           {label}
         </FormLabel>
       </Box>
-      <Textarea
+      <Input
         border="none"
         bg="#343B41"
         color="#F8F9FA"

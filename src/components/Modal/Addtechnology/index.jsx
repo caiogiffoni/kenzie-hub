@@ -13,6 +13,7 @@ import {
   Select,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 
 import { InputDiv } from "../../InputDiv";
 import { useForm } from "react-hook-form";
@@ -21,6 +22,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../../services/api";
 
 export function Addtechnology({ children, token, user, setUser }) {
+  const toast = useToast();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const schema = yup.object().shape({
@@ -52,6 +55,12 @@ export function Addtechnology({ children, token, user, setUser }) {
         api.get(`/users/${user.id}`).then((res) => {
           localStorage.setItem("@KenzieHub:user", JSON.stringify(res.data));
           setUser(res.data);
+        });
+        toast({
+          title: "Tecnologia criada",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
         });
       })
       .catch((err) => console.log(err));

@@ -87,7 +87,7 @@ export const Signin = ({ authenticated }) => {
       minH="100vh"
       bgColor="#121214"
       direction="column"
-      justify="flex-start"
+      justify="center"
       align="center"
       pt="20px"
     >

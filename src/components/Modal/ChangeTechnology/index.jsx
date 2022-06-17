@@ -13,6 +13,7 @@ import {
   ModalOverlay,
   Select,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 
 import { InputDiv } from "../../InputDiv";
@@ -23,6 +24,8 @@ import api from "../../../services/api";
 import { Card } from "../../Card";
 
 export function ChangeTechnology({ token, user, setUser, id, title, status }) {
+  const toast = useToast();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const schema = yup.object().shape({
@@ -51,6 +54,12 @@ export function ChangeTechnology({ token, user, setUser, id, title, status }) {
         },
       })
       .then((_) => {
+        toast({
+          title: "Tecnologia alterada",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
         api.get(`/users/${user.id}`).then((res) => {
           localStorage.setItem("@KenzieHub:user", JSON.stringify(res.data));
           setUser(res.data);
@@ -72,6 +81,12 @@ export function ChangeTechnology({ token, user, setUser, id, title, status }) {
         api.get(`/users/${user.id}`).then((res) => {
           localStorage.setItem("@KenzieHub:user", JSON.stringify(res.data));
           setUser(res.data);
+        });
+        toast({
+          title: "Tecnologia deletada",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
         });
       })
       .catch((err) => console.log(err));
