@@ -26,4 +26,4 @@ Aplicação de cadastro de tecnologias, remoção e edição de tecnologias estu
 
 ## 🌐 Deploy
 
-[Link do deploy](https://do-it-caiogiffoni-app.vercel.app/)
+[Link do deploy](https://kenzie-hub-caiogiffoni.vercel.app/)
